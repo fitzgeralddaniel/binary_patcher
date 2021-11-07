@@ -21,7 +21,7 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg1)
-                o.write(args.a)
+                o.write((args.a).encode())
         if args.b:
             print("Patching second arg..")
             arg2 = buffer.find(b"B"*50)
@@ -30,7 +30,7 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg2)
-                o.write(args.b)
+                o.write((args.b).encode())
         if args.c:
             print("Patching third arg..")
             arg3 = buffer.find(b"C"*50)
@@ -39,7 +39,7 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg3)
-                o.write(args.c)
+                o.write((args.c).encode())
         if args.d:
             print("Patching fourth arg..")
             arg4 = buffer.find(b"D"*50)
@@ -48,7 +48,7 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg4)
-                o.write(args.d)
+                o.write((args.d).encode())
         if args.e:
             print("Patching fifth arg..")
             arg5 = buffer.find(b"E"*50)
@@ -57,7 +57,7 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg5)
-                o.write(args.e)
+                o.write((args.e).encode())
 
     print("End of patching...")
 
