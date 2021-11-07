@@ -1,18 +1,6 @@
 #!/usr/bin/env python
 import argparse
 
-def replace_val(ival):
-    """
-    Fills out 50 char with null
-    :param ival: arg
-    """
-    if len(ival) > 50:
-        print("Error, arg larger than 50!")
-        exit(1)
-    else:
-        null = '\x00'*(50-len(ival))
-        return ival + null
-
 def patch_file(args):
     """
     Patches binary file
@@ -33,7 +21,8 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg1)
-                o.write((args.a).encode())
+                length = len(args.a)
+                o.write((args.a).encode() + '\x00'*(50-length))
         if args.b:
             print("Patching second arg..")
             arg2 = buffer.find(b"B"*50)
@@ -42,7 +31,8 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg2)
-                o.write((args.b).encode())
+                length = len(args.b)
+                o.write((args.b).encode() + '\x00'*(50-length))
         if args.c:
             print("Patching third arg..")
             arg3 = buffer.find(b"C"*50)
@@ -51,7 +41,8 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg3)
-                o.write((args.c).encode())
+                length = len(args.c)
+                o.write((args.c).encode() + '\x00'*(50-length))
         if args.d:
             print("Patching fourth arg..")
             arg4 = buffer.find(b"D"*50)
@@ -60,7 +51,8 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg4)
-                o.write((args.d).encode())
+                length = len(args.d)
+                o.write((args.d).encode() + '\x00'*(50-length))
         if args.e:
             print("Patching fifth arg..")
             arg5 = buffer.find(b"E"*50)
@@ -69,7 +61,8 @@ def patch_file(args):
             else:
                 print("Arg found.")
                 o.seek(arg5)
-                o.write((args.e).encode())
+                length = len(args.e)
+                o.write((args.e).encode() + '\x00'*(50-length))
 
     print("End of patching...")
 
