@@ -78,6 +78,19 @@ def patch_file(args):
                     print("Error: arg len > 50!")
                     exit(1)
                 o.write((args.e).encode() + b'\x00'*(50-length))
+        if args.f:
+            print("Patching sixth arg..")
+            arg6 = buffer.find(b"F"*50)
+            if (arg6 == -1):
+                print("Sixth arg not found.")
+            else:
+                print("Arg found.")
+                o.seek(arg6)
+                length = len(args.f)
+                if (length > 50):
+                    print("Error: arg len > 50!")
+                    exit(1)
+                o.write((args.f).encode() + b'\x00'*(50-length))
 
     print("End of patching...")
 
@@ -88,11 +101,12 @@ def main():
                                         "\nUse '%(prog)s -h' for more information.")
     parser.add_argument('infile', help="Full path to input exe file.")
     parser.add_argument('outfile', help="Full path to output exe file.")
-    parser.add_argument('--a', '-a', help="First arg.")
+    parser.add_argument('-a', help="First arg.")
     parser.add_argument('-b', help="Second arg.")
     parser.add_argument('-c', help="Third arg.")
     parser.add_argument('-d', help="Fourth arg.")
     parser.add_argument('-e', help="Fifth arg.")
+    parser.add_argument('-f', help="Sixth arg.")
     args = parser.parse_args()
     
     # patch_file(FILENAME, PATCHES)
