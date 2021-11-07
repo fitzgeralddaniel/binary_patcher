@@ -1,6 +1,18 @@
 #!/usr/bin/env python
 import argparse
 
+def replace_val(ival):
+    """
+    Fills out 50 char with null
+    :param ival: arg
+    """
+    if len(ival) > 50:
+        print("Error, arg larger than 50!")
+        exit(1)
+    else:
+        null = '\x00'*(50-len(ival))
+        return ival + null
+
 def patch_file(args):
     """
     Patches binary file
