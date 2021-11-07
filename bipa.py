@@ -22,6 +22,9 @@ def patch_file(args):
                 print("Arg found.")
                 o.seek(arg1)
                 length = len(args.a)
+                if (length > 50):
+                    print("Error: arg len > 50!")
+                    exit(1)
                 o.write((args.a).encode() + b'\x00'*(50-length))
         if args.b:
             print("Patching second arg..")
@@ -32,6 +35,9 @@ def patch_file(args):
                 print("Arg found.")
                 o.seek(arg2)
                 length = len(args.b)
+                if (length > 50):
+                    print("Error: arg len > 50!")
+                    exit(1)
                 o.write((args.b).encode() + b'\x00'*(50-length))
         if args.c:
             print("Patching third arg..")
@@ -42,6 +48,9 @@ def patch_file(args):
                 print("Arg found.")
                 o.seek(arg3)
                 length = len(args.c)
+                if (length > 50):
+                    print("Error: arg len > 50!")
+                    exit(1)
                 o.write((args.c).encode() + b'\x00'*(50-length))
         if args.d:
             print("Patching fourth arg..")
@@ -52,6 +61,9 @@ def patch_file(args):
                 print("Arg found.")
                 o.seek(arg4)
                 length = len(args.d)
+                if (length > 50):
+                    print("Error: arg len > 50!")
+                    exit(1)
                 o.write((args.d).encode() + b'\x00'*(50-length))
         if args.e:
             print("Patching fifth arg..")
@@ -62,6 +74,9 @@ def patch_file(args):
                 print("Arg found.")
                 o.seek(arg5)
                 length = len(args.e)
+                if (length > 50):
+                    print("Error: arg len > 50!")
+                    exit(1)
                 o.write((args.e).encode() + b'\x00'*(50-length))
 
     print("End of patching...")
