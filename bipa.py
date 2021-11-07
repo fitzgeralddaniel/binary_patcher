@@ -9,8 +9,9 @@ def patch_file(args):
     print("Begin patching...")
     with open(args.infile, 'r+b') as f:
         buffer = f.read()
-    with open(args.outfile, 'w+b') as o:
-        o.write(buffer)  
+        with open(args.outfile, 'w+b') as o:
+            o.write(buffer)
+    with open(args.outfile, 'r+b') as o:
         if args.a:
             print("Patching first arg..")
             arg1 = o.find(b"A"*50)
