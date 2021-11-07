@@ -9,53 +9,54 @@ def patch_file(args):
     print("Begin patching...")
     with open(args.infile, 'r+b') as f:
         buffer = f.read()
+    with open(args.outfile, 'w+b') as o:
+        o.write(buffer)  
         if args.a:
             print("Patching first arg..")
-            arg1 = buffer.find(b"A"*50)
+            arg1 = o.find(b"A"*50)
             if (arg1 == -1):
                 print("First arg not found.")
             else:
                 print("Arg found.")
-                buffer.seek(arg1)
-                buffer.write(args.a)
+                o.seek(arg1)
+                o.write(args.a)
         if args.b:
             print("Patching second arg..")
-            arg2 = buffer.find(b"B"*50)
+            arg2 = o.find(b"B"*50)
             if (arg2 == -1):
                 print("Second arg not found.")
             else:
                 print("Arg found.")
-                buffer.seek(arg2)
-                buffer.write(args.b)
+                o.seek(arg2)
+                o.write(args.b)
         if args.c:
             print("Patching third arg..")
-            arg3 = buffer.find(b"C"*50)
+            arg3 = o.find(b"C"*50)
             if (arg3 == -1):
                 print("Third arg not found.")
             else:
                 print("Arg found.")
-                buffer.seek(arg3)
-                buffer.write(args.c)
+                o.seek(arg3)
+                o.write(args.c)
         if args.d:
             print("Patching fourth arg..")
-            arg4 = buffer.find(b"D"*50)
+            arg4 = o.find(b"D"*50)
             if (arg4 == -1):
                 print("Fourth arg not found.")
             else:
                 print("Arg found.")
-                buffer.seek(arg4)
-                buffer.write(args.d)
+                o.seek(arg4)
+                o.write(args.d)
         if args.e:
             print("Patching fifth arg..")
-            arg5 = buffer.find(b"E"*50)
+            arg5 = o.find(b"E"*50)
             if (arg5 == -1):
                 print("Fifth arg not found.")
             else:
                 print("Arg found.")
-                buffer.seek(arg5)
-                buffer.write(args.e)
-    with open(args.outfile, 'w+b') as o:
-        o.write(buffer)  
+                o.seek(arg5)
+                o.write(args.e)
+
     print("End of patching...")
 
 def main():
