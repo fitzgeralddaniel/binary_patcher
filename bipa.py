@@ -11,7 +11,7 @@ def patch_file(args):
         buffer = f.read()
         if args.a:
             print("Patching first arg..")
-            arg1 = buffer.find("A"*50)
+            arg1 = buffer.find(b"A"*50)
             if (arg1 == -1):
                 print("First arg not found.")
             else:
@@ -20,7 +20,7 @@ def patch_file(args):
                 buffer.write(args.a)
         if args.b:
             print("Patching second arg..")
-            arg2 = buffer.find("B"*50)
+            arg2 = buffer.find(b"B"*50)
             if (arg2 == -1):
                 print("Second arg not found.")
             else:
@@ -29,7 +29,7 @@ def patch_file(args):
                 buffer.write(args.b)
         if args.c:
             print("Patching third arg..")
-            arg3 = buffer.find("C"*50)
+            arg3 = buffer.find(b"C"*50)
             if (arg3 == -1):
                 print("Third arg not found.")
             else:
@@ -38,7 +38,7 @@ def patch_file(args):
                 buffer.write(args.c)
         if args.d:
             print("Patching fourth arg..")
-            arg4 = buffer.find("D"*50)
+            arg4 = buffer.find(b"D"*50)
             if (arg4 == -1):
                 print("Fourth arg not found.")
             else:
@@ -47,7 +47,7 @@ def patch_file(args):
                 buffer.write(args.d)
         if args.e:
             print("Patching fifth arg..")
-            arg5 = buffer.find("E"*50)
+            arg5 = buffer.find(b"E"*50)
             if (arg5 == -1):
                 print("Fifth arg not found.")
             else:
