@@ -87,8 +87,9 @@ def patch_file(args):
                 print("Arg found.")
                 o.seek(arg6)
                 length = len(args.f)
-                if (length > 50):
-                    print("Error: arg len > 50!")
+                #TODO: Find a better way to do this!!!
+                if (length > 2205):
+                    print("Error: arg len > 2205!")
                     exit(1)
                 o.write((args.f).encode() + b'\x00'*(50-length))
 
