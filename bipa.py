@@ -93,7 +93,8 @@ def patch_file(args):
                     exit(1)
                 elif (length > 50):
                     print("Warning: arg len > 50!\nWill fail on UDP!")
-                o.write((args.f).encode() + b'\x00'*(2205-length))
+                # Need to fix this as well
+                o.write((args.f).encode() + b'\x00'*(50-length))
         if args.g:
             print("Patching seventh arg..")
             arg7 = buffer.find(b"G"*50)
