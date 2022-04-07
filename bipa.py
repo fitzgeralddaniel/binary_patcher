@@ -88,8 +88,8 @@ def patch_file(args):
                 o.seek(arg6)
                 length = len(args.f)
                 #TODO: Find a better way to do this!!!
-                if (length > 2205):
-                    print("Error: arg len > 2205!")
+                if (length > 100):
+                    print("Error: arg len > 100!")
                     exit(1)
                 elif (length > 50):
                     print("Warning: arg len > 50!\nWill fail on UDP!")
