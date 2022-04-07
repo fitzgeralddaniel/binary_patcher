@@ -91,14 +91,32 @@ def patch_file(args):
                 if (length > 2205):
                     print("Error: arg len > 2205!")
                     exit(1)
-                o.write((args.f).encode() + b'\x00'*(50-length))
+                elif (length > 50):
+                    print("Warning: arg len > 50!\nWill fail on UDP!")
+                o.write((args.f).encode() + b'\x00'*(2205-length))
+        if args.g:
+            print("Patching seventh arg..")
+            arg7 = buffer.find(b"G"*50)
+            if (arg7 == -1):
+                print("Fifth arg not found.")
+            else:
+                print("Arg found.")
+                o.seek(arg7)
+                length = len(args.g)
+                #TODO: Find a better way to do this!!!
+                if (length > 100):
+                    print("Error: arg len > 100!")
+                    exit(1)
+                elif (args.g):
+                    print("Warning: args.g set\nWill fail on TCP!")
+                o.write((args.g).encode() + b'\x00'*(100-length))
 
     print("End of patching...")
 
 def main():
-    parser = argparse.ArgumentParser(description='Program to patch arguments (up to 5) into executables.',
+    parser = argparse.ArgumentParser(description='Program to patch arguments (up to 7) into executables.',
                                     usage="\n"
-                                        "%(prog)s [input filename] [output filename] [-a arg1] [-b arg2] [-c arg3] [-d arg4] [-e arg5]"
+                                        "%(prog)s [input filename] [output filename] [-a arg1] [-b arg2] [-c arg3] [-d arg4] [-e arg5] [-f arg6] [-g arg7]"
                                         "\nUse '%(prog)s -h' for more information.")
     parser.add_argument('infile', help="Full path to input exe file.")
     parser.add_argument('outfile', help="Full path to output exe file.")
@@ -108,6 +126,7 @@ def main():
     parser.add_argument('-d', help="Fourth arg.")
     parser.add_argument('-e', help="Fifth arg.")
     parser.add_argument('-f', help="Sixth arg.")
+    parser.add_argument('-g', help="Seventh arg.")
     args = parser.parse_args()
     
     # patch_file(FILENAME, PATCHES)
